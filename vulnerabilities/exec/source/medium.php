@@ -15,12 +15,12 @@ if( isset( $_POST[ 'Submit' ]  ) ) {
 
 	// Determine OS and execute the ping command.
 	if( stristr( php_uname( 's' ), 'Windows NT' ) ) {
-		// Windows
-		$cmd = shell_exec( 'ping  ' . $target );
+// Windows
+		$cmd = shell_exec( 'ping  ' . escapeshellarg($target) );
 	}
 	else {
 		// *nix
-		$cmd = shell_exec( 'ping  -c 4 ' . $target );
+		$cmd = shell_exec( 'ping  -c 4 ' . escapeshellarg($target) );
 	}
 
 	// Feedback for the end user
